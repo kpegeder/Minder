@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static Directory
-app.use(expres.static("public"));
+app.use(express.static("public"));
 
 // Import routes and give the server access to them
 // Need to set up routes

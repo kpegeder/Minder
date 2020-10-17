@@ -1,7 +1,7 @@
 // Create table for the post
-module.exports = function (sequilized, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   // Create Table
-  const Movies = sequilize.define("Movies", {
+  const Movies = sequelize.define("Movies", {
     // Insert the column names
   });
 
