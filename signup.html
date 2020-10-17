@@ -19,10 +19,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
             </li>
-        
-            <li class="nav-item">
-                <a class="nav-link" href="#">Log In</a>
-              </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -31,12 +27,36 @@
         </div>
       </nav>
 
-      <div class="jumbotron">
-        <h1 class="display-4">Hey, (Insert user name)!</h1>
-        <p class="lead">This is your unique profile where you'll be able to find all your saved movies.</p>
-        <hr class="my-4">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Click to see movies</a>
-      </div>
+    <div class="container">
+        <form>
+            <div class="form-group">
+              <label for="formGroupExampleInput">First Name</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Last Name</label>
+              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+            </div>
+            <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign me up!</button>
+                  </div>
+                </div>
+          </form>
+    </div>
+
 
 </body>
 
