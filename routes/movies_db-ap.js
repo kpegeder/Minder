@@ -4,4 +4,20 @@ const router = express.Router();
 
 const db = require("../models");
 
-router.get("/api/account/:id", function (req, res) {});
+// Select all movies for a single account
+router.get("/api/account/:id", function (req, res) {
+  db.Movies.findAll({
+    where: { AccountId: req.params.id },
+  }).then(function (results) {
+    res.json(results);
+  });
+});
+
+// Unknown route
+router.get("/", function (req, res) {
+  db.Movies.create(req.body).then(function (results) {
+    res.json(results);
+  });
+});
+
+module.exports = router;
