@@ -14,9 +14,22 @@ router.get("/api/account/:id", function (req, res) {
 });
 
 // Unknown route
-router.get("/", function (req, res) {
+router.post("/", function (req, res) {
   db.Movies.create(req.body).then(function (results) {
     res.json(results);
+  });
+});
+
+// Delete movie
+router.delete("/api/account/:id", function (req, res) {
+  db.Movies.destroy({
+    where: { id: req.params.id },
+  }).then(function (result) {
+    if (result.affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
   });
 });
 
