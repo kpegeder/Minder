@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
     poster: DataTypes.STRING,
     genre: DataTypes.STRING,
     actor: DataTypes.STRING,
-    runtime: DataTypes.FLOAT,
+    runtime: DataTypes.STRING,
     year: DataTypes.INTEGER,
-    metaCritic: DataTypes.FLOAT,
-    rottenTomato: DataTypes.FLOAT,
-    imdb: DataTypes.FLOAT,
+    metaCritic: DataTypes.STRING,
+    rottenTomato: DataTypes.STRING,
+    imdb: DataTypes.STRING,
   });
 
   // Connect Movies with an Account
