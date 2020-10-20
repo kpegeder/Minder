@@ -12,7 +12,7 @@ function displayMovieInfo() {
     method: "GET",
   }).then(function (res) {
     console.log(res);
-    let profile = Math.floor(Math.random() * 100);
+
     let addMovie = {
       title: res.Title,
       poster: res.Poster,
@@ -21,7 +21,6 @@ function displayMovieInfo() {
       runtime: res.Runtime,
       metaCritic: res.Metascore,
       imdb: res.imdbRating,
-      AccountId: profile,
     };
 
     submitMovie(addMovie);
@@ -29,9 +28,7 @@ function displayMovieInfo() {
 }
 
 function submitMovie(movie) {
-  $.post("/api/movie", movie, function () {
-    window.reload;
-  });
+  $.post("/api/movie/", movie);
 }
 // $("#add-movie").on("click", function (event) {
 //   event.preventDefault();
