@@ -14,7 +14,8 @@ router.get("/api/account/:id", function (req, res) {
 });
 
 // Unknown route
-router.post("/", function (req, res) {
+router.post("/api/movie", function (req, res) {
+  console.log(req.body);
   db.Movies.create(req.body).then(function (results) {
     res.json(results);
   });
