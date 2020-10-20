@@ -1,46 +1,49 @@
 function displayMovieInfo() {
-
   // var movie = $(this).attr("data-name");
-  var movie = $("#movie-input").val().trim();
-  var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+  let movie = $("#movie-input").val().trim();
+  const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+
+  // Create holding variable
+  // let results;
 
   // Creating an AJAX call for the specific movie button being clicked
   $.ajax({
     url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-      
-      console.log(response);
+    method: "GET",
+  }).then(function (res) {
+    console.log(res);
+    let profile = Math.floor(Math.random() * 100);
+    let addMovie = {
+      title: res.Title,
+      poster: res.Poster,
+      genre: res.Genre,
+      actor: res.Actors,
+      runtime: res.Runtime,
+      metaCritic: res.Metascore,
+      imdb: res.imdbRating,
+      AccountId: profile,
+    };
 
-  
+    submitMovie(addMovie);
   });
-
 }
 
+function submitMovie(movie) {
+  $.post("/api/movie", movie, function () {
+    window.reload;
+  });
+}
+// $("#add-movie").on("click", function (event) {
+//   event.preventDefault();
+//   // This line grabs the input from the textbox
+//   let movie = $("#movie-input").val().trim();
+//   console.log(movie);
 
-$("#add-movie").on("click", function(event) {
-  event.preventDefault();
-  // This line grabs the input from the textbox
-  var movie = $("#movie-input").val().trim();
-  console.log(movie);
-
-  // // Adding movie from the textbox to our array
-  // movies.push(movie);
- 
- 
-});
+//   // // Adding movie from the textbox to our array
+//   // movies.push(movie);
+// });
 
 $(document).on("click", "#add-movie", displayMovieInfo);
-
-
-
-
-
-
-
-
-
-
 
 // $(document).ready(function () {
 //   function getMovieInto() {}
@@ -57,11 +60,3 @@ $(document).on("click", "#add-movie", displayMovieInfo);
 //     });
 //   });
 // });
-
-
-
-
-
-
-
-
