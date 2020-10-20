@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
     genre: DataTypes.STRING,
     actor: DataTypes.STRING,
     runtime: DataTypes.STRING,
-    year: DataTypes.INTEGER,
+    plot: DataTypes.TEXT,
     metaCritic: DataTypes.STRING,
     rottenTomato: DataTypes.STRING,
     imdb: DataTypes.STRING,
