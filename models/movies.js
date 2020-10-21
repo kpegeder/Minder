@@ -4,13 +4,14 @@ module.exports = function (sequelize, DataTypes) {
   const Movies = sequelize.define("Movies", {
     // Insert the column names
     title: DataTypes.STRING,
+    poster: DataTypes.STRING,
     genre: DataTypes.STRING,
     actor: DataTypes.STRING,
-    runtime: DataTypes.FLOAT,
-    year: DataTypes.INTEGER,
-    metaCritic: DataTypes.FLOAT,
-    rottenTomato: DataTypes.FLOAT,
-    imdb: DataTypes.FLOAT,
+    runtime: DataTypes.STRING,
+    plot: DataTypes.TEXT,
+    metaCritic: DataTypes.STRING,
+    rottenTomato: DataTypes.STRING,
+    imdb: DataTypes.STRING,
   });
 
   // Connect Movies with an Account

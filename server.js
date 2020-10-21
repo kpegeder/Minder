@@ -1,6 +1,7 @@
 // Dependencies
+require("dotenv").config();
 const express = require("express");
-require('dotenv').config();
+
 // Set up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -17,11 +18,14 @@ app.use(express.static("public"));
 
 // Import routes and give the server access to them
 // Need to set up routes
-const routes = require();
+const routesHTML = require("./routes/html-routes");
+const routesMovie = require("./routes/movies_db-routes");
 
-app.use(routes);
+app.use(routesHTML);
+app.use(routesMovie);
 
 // Syncing our sequelize models and then starting our Express app
+// {force:true} create a new table each time
 db.sequelize.sync({ force: true }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
