@@ -16,6 +16,12 @@ app.use(express.json());
 // Static Directory
 app.use(express.static("public"));
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "homepage" }));
+app.set("view engine", "handlebars");
+
 // Import routes and give the server access to them
 // Need to set up routes
 const routesHTML = require("./routes/html-routes");
