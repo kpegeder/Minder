@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require("../models");
 
 // Select all movies for a single account
-router.get("/api/account/:id", function (req, res) {
+router.get("/api/movie/:id", function (req, res) {
   db.Movies.findAll({
     where: { AccountId: req.params.id },
   }).then(function (results) {
@@ -22,7 +22,7 @@ router.post("/api/movie", function (req, res) {
 });
 
 // Delete movie
-router.delete("/api/account/:id", function (req, res) {
+router.delete("/api/movie/:id", function (req, res) {
   db.Movies.destroy({
     where: { id: req.params.id },
   }).then(function (result) {

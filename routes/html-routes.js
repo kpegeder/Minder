@@ -20,4 +20,8 @@ router.get("/signup", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 
+router.get("/landing", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/landing.html"));
+});
+
 module.exports = router;
