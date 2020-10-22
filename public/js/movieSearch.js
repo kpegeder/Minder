@@ -1,10 +1,9 @@
 $(document).ready(function () {
-  let addMovie = {};
-  function displayMovieInfo() {
+  // let addMovie = {};
+  function displayMovieInfo(event) {
+    event.preventDefault();
     let movie = $("#movie-input").val().trim();
-    const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
-
-    // Create holding variable
+    const queryURL = "http://www.omdbapi.com/?t=" + movie + "&apikey=a9df4696";
 
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
@@ -14,25 +13,26 @@ $(document).ready(function () {
       console.log(res);
 
       movieCard(res);
-      addMovie = {
-        title: res.Title,
-        poster: res.Poster,
-        genre: res.Genre,
-        actor: res.Actors,
-        plot: res.Plot,
-        runtime: res.Runtime,
-        metaCritic: res.Metascore,
-        imdb: res.imdbRating,
-      };
+      // addMovie = {
+      //   title: res.Title,
+      //   poster: res.Poster,
+      //   genre: res.Genre,
+      //   actor: res.Actors,
+      //   plot: res.Plot,
+      //   runtime: res.Runtime,
+      //   metaCritic: res.Metascore,
+      //   imdb: res.imdbRating,
+      // };
     });
   }
+
   // submitMovie(addMovie);
   function submitMovie(movie) {
     console.log(movie);
     // $.post("/api/movie/", movie);
   }
 
-  $("#add-movie").on("click", submitMovie);
+  // $("#add-movie").on("click", submitMovie);
   $("#show-movie").on("click", displayMovieInfo);
 });
 
@@ -110,14 +110,3 @@ function movieCard(result) {
   $("#movie-tp").append(title, plot);
   $("#movie-RGAR").append(rating, genre, actor, runTime);
 }
-
-// let addMovie = {
-//   title: res.Title,
-//   poster: res.Poster,
-//   genre: res.Genre,
-//   actor: res.Actors,
-//   plot: res.Plot,
-//   runtime: res.Runtime,
-//   metaCritic: res.Metascore,
-//   imdb: res.imdbRating,
-// };
