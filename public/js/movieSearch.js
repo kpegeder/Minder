@@ -32,6 +32,7 @@ $(document).ready(function () {
     // $.post("/api/movie/", movie);
   }
 
+
   // $("#add-movie").on("click", submitMovie);
   $("#show-movie").on("click", displayMovieInfo);
 });
