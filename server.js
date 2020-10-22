@@ -20,9 +20,11 @@ app.use(express.static("public"));
 // Need to set up routes
 const routesHTML = require("./routes/html-routes");
 const routesMovie = require("./routes/movies_db-routes");
+const routesAccount = require("./routes/account-api-routes");
 
 app.use(routesHTML);
 app.use(routesMovie);
+app.use(routesAccount);
 
 // Syncing our sequelize models and then starting our Express app
 // {force:true} create a new table each time
