@@ -1,12 +1,10 @@
 $(document).ready(function () {
+  let addMovie = {};
   function displayMovieInfo() {
-    // event.preventDefault();
-    // var movie = $(this).attr("data-name");
     let movie = $("#movie-input").val().trim();
     const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
     // Create holding variable
-    // let results;
 
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
@@ -15,7 +13,8 @@ $(document).ready(function () {
     }).then(function (res) {
       console.log(res);
 
-      let addMovie = {
+      movieCard(res);
+      addMovie = {
         title: res.Title,
         poster: res.Poster,
         genre: res.Genre,
@@ -25,27 +24,17 @@ $(document).ready(function () {
         metaCritic: res.Metascore,
         imdb: res.imdbRating,
       };
-
-      submitMovie(addMovie);
     });
   }
-
+  // submitMovie(addMovie);
   function submitMovie(movie) {
-    $.post("/api/movie/", movie);
+    console.log(movie);
+    // $.post("/api/movie/", movie);
   }
-  $("#add-movie").on("click", displayMovieInfo);
 
-  // function (event) {
-  //   event.preventDefault();
-  //   // This line grabs the input from the textbox
-  //   let movie = $("#movie-input").val().trim();
-  //   console.log(movie);
-
-  // // Adding movie from the textbox to our array
-  // movies.push(movie);
-  // });
+  $("#add-movie").on("click", submitMovie);
+  $("#show-movie").on("click", displayMovieInfo);
 });
-// $(document).on("click", "#add-movie", displayMovieInfo);
 
 // $(document).ready(function () {
 //   function getMovieInto() {}
@@ -62,3 +51,73 @@ $(document).ready(function () {
 //     });
 //   });
 // });
+
+function movieCard(result) {
+  $("#movie-tp").empty();
+  $("#movie-RGAR").empty();
+  $(".hidden").removeClass("hidden");
+
+  $("#movie-tp").prepend(
+    $("<img>").attr({
+      src: result.Poster,
+      class: "card-img-top",
+      id: "movie-poster",
+    })
+  );
+
+  let title = $("<h5>")
+    .attr({
+      class: "card-title",
+      id: "movie-title",
+    })
+    .text(result.Title);
+
+  let plot = $("<p>")
+    .attr({
+      class: "card-text",
+      id: "movie-plot",
+    })
+    .text(result.Plot);
+
+  let rating = $("<li>")
+    .attr({
+      class: "list-group-item",
+      id: "movie-rating",
+    })
+    .text(result.imdbRating);
+
+  let genre = $("<li>")
+    .attr({
+      class: "list-group-item",
+      id: "movie-genre",
+    })
+    .text(result.Genre);
+
+  let actor = $("<li>")
+    .attr({
+      class: "list-group-item",
+      id: "movie-actor",
+    })
+    .text(result.Actors);
+
+  let runTime = $("<li>")
+    .attr({
+      class: "list-group-item",
+      id: "movie-runtime",
+    })
+    .text(result.Runtime);
+
+  $("#movie-tp").append(title, plot);
+  $("#movie-RGAR").append(rating, genre, actor, runTime);
+}
+
+// let addMovie = {
+//   title: res.Title,
+//   poster: res.Poster,
+//   genre: res.Genre,
+//   actor: res.Actors,
+//   plot: res.Plot,
+//   runtime: res.Runtime,
+//   metaCritic: res.Metascore,
+//   imdb: res.imdbRating,
+// };

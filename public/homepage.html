@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,7 +60,7 @@
           />
           <button
             class="btn btn-outline-success my-2 my-sm-0"
-            id="add-movie"
+            id="show-movie"
             type="submit"
           >
             Search
@@ -72,26 +71,14 @@
   </nav>
 
   <body>
- 
-    <div class="card container" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Movie title</h5>
-        <p class="card-text">Plot summary</p>
+    <div class="card container hidden" id="movie-info">
+      <div class="card-body" id="movie-tp"></div>
+      <ul class="list-group list-group-flush" id="movie-RGAR"></ul>
+      <div class="card-body" id="movie-buttons">
+        <button class="card-link" id="discard-movie">No thanks</button>
+        <button class="card-link" id="add-movie">I like it!</button>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Rating</li>
-        <li class="list-group-item">Genre</li>
-        <li class="list-group-item">Actors</li>
-        <li class="list-group-item">Run Time</li>
-      </ul>
-      <div class="card-body">
-        <button class="card-link">No thanks</button>
-        <button class="card-link">I like it!</button>
-      </div>
-    </div> 
-   
-
+    </div>
   </body>
 
   <footer class="footer">
@@ -118,4 +105,3 @@
   <script src="js/movieSearch.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
-
