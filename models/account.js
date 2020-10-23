@@ -1,9 +1,22 @@
+const bcrypt = require("bcryptjs");
+
 module.exports = function (sequelize, DataTypes) {
   const Account = sequelize.define("Account", {
-    // Give the Account model a name
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 
   // Account.associate = function (models) {
@@ -13,6 +26,18 @@ module.exports = function (sequelize, DataTypes) {
   //     onDelete: "cascade",
   //   });
   // };
+
+  Account.prototype.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+
+  Account.addHook("beforeCreate", function (account) {
+    account.password = bcrypt.hashSync(
+      account.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
+  });
 
   return Account;
 };

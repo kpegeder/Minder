@@ -4,6 +4,8 @@ const router = express.Router();
 
 const db = require("../models");
 
+const passport = require("../config/passport");
+
 // Select all account for a single account
 router.get("/api/account/:id", function (req, res) {
   db.Account.findAll({
@@ -13,12 +15,38 @@ router.get("/api/account/:id", function (req, res) {
   });
 });
 
-// Unknown route
-router.post("/api/account", function (req, res) {
+// Sign in
+router.post("/api/login", passport.authenticate("local"), function (req, res) {
+  console.log(req.user);
+  res.json(req.user);
+});
+
+// Sign up
+router.post("/api/signup", function (req, res) {
   console.log(req.body);
-  db.Account.create(req.body).then(function (results) {
-    res.json(results);
-  });
+  db.Account.create(req.body)
+    .then(function () {
+      res.redirect(307, "/api/login");
+    })
+    .catch(function (err) {
+      res.status(401).json(err);
+    });
+});
+
+// Route for getting some user data
+router.get("/api/account_data", function (req, res) {
+  res.json(req.user);
+  // if (!req.user) {
+  //   res.json({});
+  // } else {
+  //   res.json({ req });
+  // }
+});
+
+// Route for logging user out
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
 });
 
 // Delete movie
