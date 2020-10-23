@@ -15,13 +15,13 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   // Connect Movies with an Account
-  Movies.associate = function (models) {
-    Movies.belongsTo(models.Account, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
+  // Movies.associate = function (models) {
+  //   Movies.belongsTo(models.Account, {
+  //     foreignKey: {
+  //       allowNull: false,
+  //     },
+  //   });
+  // };
 
   return Movies;
 };
