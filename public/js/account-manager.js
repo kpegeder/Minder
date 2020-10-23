@@ -24,7 +24,7 @@ $(document).ready(function () {
 
   function createUser(user) {
     $.post("/api/account", user, function () {
-      window.location.href = "/";
+      window.location.relocation("/homepage");
     });
   }
 

@@ -4,7 +4,7 @@ const router = express.Router();
 
 const path = require("path");
 
-router.get("/", function (req, res) {
+router.get("/homepage", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/homepage.html"));
 });
 
@@ -20,7 +20,7 @@ router.get("/signup", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 
-router.get("/landing", function (req, res) {
+router.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/landing.html"));
 });
 
