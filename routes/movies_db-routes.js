@@ -4,12 +4,11 @@ const router = express.Router();
 
 const db = require("../models");
 
+const passport = require("../config/passport");
+
 // Select all movies for a single account
 router.get("/api/movie/", function (req, res) {
-  db.Movies.findAll({
-   
-  }).then(function (results) {
-    console.log(results[0]);
+  db.Movies.findAll({}).then(function (results) {
     res.render("index", { Movies: results });
   });
 });
@@ -36,8 +35,6 @@ router.delete("/api/movie/:id", function (req, res) {
 });
 
 module.exports = router;
-
-
 
 // app.get("/", function(req, res) {
 //   connection.query("SELECT * FROM tasks;", function(err, data) {
