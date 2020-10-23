@@ -1,16 +1,18 @@
 $(document).ready(function () {
+  // let search = false;
   // let addMovie = {};
   function displayMovieInfo(event) {
     event.preventDefault();
     let movie = $("#movie-input").val().trim();
     const queryURL = "http://www.omdbapi.com/?t=" + movie + "&apikey=a9df4696";
 
+    // let search = true;
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (res) {
-      console.log(res);
+      // console.log(res);
 
       movieCard(res);
       // addMovie = {
@@ -26,12 +28,17 @@ $(document).ready(function () {
     });
   }
 
-  // submitMovie(addMovie);
-  function submitMovie(movie) {
-    console.log(movie);
-    // $.post("/api/movie/", movie);
-  }
+  // Trying to get the search but to work after movie is displayed
+  // if (search) {
+  //   console.log("hi");
+  //   submitMovie(addMovie);
+  // }
 
+  // function submitMovie(movie) {
+  //   console.log(movie);
+  //   console.log($("#movie-poster")[0].currentSrc);
+  // $.post("/api/movie/", movie);
+  // }
 
   // $("#add-movie").on("click", submitMovie);
   $("#show-movie").on("click", displayMovieInfo);
