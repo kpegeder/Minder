@@ -51,7 +51,7 @@
           </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
+        <!-- <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="text"
@@ -60,19 +60,25 @@
             aria-label="Search"
           />
           <button
+<<<<<<< Updated upstream
             class="btn btn-outline-success my-2 my-sm-0"
             id="add-movie"
+=======
+            class="btn btn-default my-2 my-sm-0"
+            id="show-movie"
+>>>>>>> Stashed changes
             type="submit"
           >
             Search
           </button>
-        </form>
+        </form> -->
       </div>
     </nav>
   </nav>
 
   <body>
     <div class="container">
+<<<<<<< Updated upstream
       <div class="row">
         <div class="col-6">
           <div class="card-body">
@@ -81,15 +87,47 @@
             <a href="#" class="btn btn-primary">Search</a>
           </div>
         </div>
+=======
+
+      <div class="row">
+
+          <div class="col-6">
+    <div class="card container hidden" id="movie-info">
+      <div class="card-body" id="movie-tp"></div>
+      <ul class="list-group list-group-flush" id="movie-RGAR"></ul>
+      <div class="card-body" id="movie-buttons">
+        <button class="card-link" id="discard-movie">No thanks</button>
+        <button class="card-link" id="add-movie">I like it!</button>
+>>>>>>> Stashed changes
       </div>
     </div>
+  </div>
+  <form class="form-inline my-2 my-lg-0">
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      id="movie-input"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button
+      class="btn btn-default my-2 my-sm-0"
+      id="show-movie"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
+</div>
+</div>
+</div>
   </body>
 
-  <footer class="footer">
+  <!-- <footer class="footer">
     <div class="container">
       <span class="text">We can put whatever here.</span>
     </div>
-  </footer>
+  </footer> -->
 
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

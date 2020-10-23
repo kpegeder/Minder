@@ -39,6 +39,13 @@ html, body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
+  background-image: url(../Assets/1597777.jpg);
+  /* background-repeat: no-repeat;
+  background-position: top; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .cover-container {
@@ -68,7 +75,29 @@ html, body {
 }
 
 
+<<<<<<< Updated upstream
 
+=======
+.hidden {
+  display: none;
+}
+/*Added temporary border*/
+#movie-info {
+  border-style: dashed;
+  border-color: red;
+}
+/*Added temporary border*/
+#movie-input {
+  border-style: dashed;
+  border-color: red;
+  pos
+}
+/*Added temporary border*/
+#show-movie {
+  border-style: dashed;
+  border-color: red;
+}
+>>>>>>> Stashed changes
 
 /* Previous bootstrap design */
 /* .display-4 {
