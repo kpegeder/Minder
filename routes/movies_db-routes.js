@@ -7,10 +7,10 @@ const db = require("../models");
 // Select all movies for a single account
 router.get("/api/movie/", function (req, res) {
   db.Movies.findAll({
-    // where: { AccountId: req.params.id
-    // },
+   
   }).then(function (results) {
-    res.json(results);
+    console.log(results[0]);
+    res.render("index", { Movies: results });
   });
 });
 
@@ -36,3 +36,19 @@ router.delete("/api/movie/:id", function (req, res) {
 });
 
 module.exports = router;
+
+
+
+// app.get("/", function(req, res) {
+//   connection.query("SELECT * FROM tasks;", function(err, data) {
+//     if (err) throw err;
+
+//     // Test it
+//     // console.log('The solution is: ', data);
+
+//     // Test it
+//     // return res.send(data);
+
+//     res.render("index", { Movies: data });
+//   });
+// });
