@@ -37,7 +37,14 @@ body {
 
 .site-wrapper-inner {
   display: table-cell;
-  vertical-align: top;
+    vertical-align: top;
+    background-image: url(../Assets/1597777.jpg);
+    /* background-repeat: no-repeat;
+    background-position: top; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .cover-container {
