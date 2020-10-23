@@ -33,7 +33,7 @@ $(document).ready(function () {
 
   // Add object to database
   function submitMovie() {
-    $.post("/api/movie/", movie);
+    $.post("/api/movie/", addMovie);
   }
 
   // Button listeners
