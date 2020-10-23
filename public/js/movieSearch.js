@@ -1,12 +1,13 @@
 $(document).ready(function () {
-  // let search = false;
-  // let addMovie = {};
+  // Global variable
+  let addMovie;
+
+  // Display movie to the webpage
   function displayMovieInfo(event) {
     event.preventDefault();
     let movie = $("#movie-input").val().trim();
     const queryURL = "http://www.omdbapi.com/?t=" + movie + "&apikey=a9df4696";
 
-    // let search = true;
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
       url: queryURL,
@@ -15,50 +16,30 @@ $(document).ready(function () {
       // console.log(res);
 
       movieCard(res);
-      // addMovie = {
-      //   title: res.Title,
-      //   poster: res.Poster,
-      //   genre: res.Genre,
-      //   actor: res.Actors,
-      //   plot: res.Plot,
-      //   runtime: res.Runtime,
-      //   metaCritic: res.Metascore,
-      //   imdb: res.imdbRating,
-      // };
+
+      // Movie object for the database
+      addMovie = {
+        title: res.Title,
+        poster: res.Poster,
+        genre: res.Genre,
+        actor: res.Actors,
+        plot: res.Plot,
+        runtime: res.Runtime,
+        metaCritic: res.Metascore,
+        imdb: res.imdbRating,
+      };
     });
   }
 
-  // Trying to get the search but to work after movie is displayed
-  // if (search) {
-  //   console.log("hi");
-  //   submitMovie(addMovie);
-  // }
+  // Add object to database
+  function submitMovie() {
+    $.post("/api/movie/", movie);
+  }
 
-  // function submitMovie(movie) {
-  //   console.log(movie);
-  //   console.log($("#movie-poster")[0].currentSrc);
-  // $.post("/api/movie/", movie);
-  // }
-
-  // $("#add-movie").on("click", submitMovie);
+  // Button listeners
+  $("#add-movie").on("click", submitMovie);
   $("#show-movie").on("click", displayMovieInfo);
 });
-
-// $(document).ready(function () {
-//   function getMovieInto() {}
-
-//   // Delete button
-//   // Need to update .delete-id and data id
-//   $(".delete-id").on("click", function (event) {
-//     let id = $(this).data("id");
-
-//     $.ajax("/api/account/" + id, {
-//       type: "Delete",
-//     }).then(function () {
-//       location.reload();
-//     });
-//   });
-// });
 
 function movieCard(result) {
   $("#movie-tp").empty();
