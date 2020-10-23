@@ -7,13 +7,13 @@ module.exports = function (sequelize, DataTypes) {
     password: DataTypes.STRING,
   });
 
-  Account.associate = function (models) {
-    // Associating Account with Movies
-    // When an Account is deleted, also delete any associated Movies
-    Account.hasMany(models.Movies, {
-      onDelete: "cascade",
-    });
-  };
+  // Account.associate = function (models) {
+  //   // Associating Account with Movies
+  //   // When an Account is deleted, also delete any associated Movies
+  //   Account.hasMany(models.Movies, {
+  //     onDelete: "cascade",
+  //   });
+  // };
 
   return Account;
 };
