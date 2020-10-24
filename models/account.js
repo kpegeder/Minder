@@ -19,13 +19,13 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  // Account.associate = function (models) {
-  //   // Associating Account with Movies
-  //   // When an Account is deleted, also delete any associated Movies
-  //   Account.hasMany(models.Movies, {
-  //     onDelete: "cascade",
-  //   });
-  // };
+  Account.associate = function (models) {
+    // Associating Account with Movies
+    // When an Account is deleted, also delete any associated Movies
+    Account.hasMany(models.Movies, {
+      onDelete: "cascade",
+    });
+  };
 
   Account.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);

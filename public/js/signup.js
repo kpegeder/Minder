@@ -27,7 +27,7 @@ $(document).ready(function () {
   function createUser(user) {
     $.post("/api/signup", user)
       .then(function (data) {
-        window.location.href("/homepage");
+        window.location.replace("/profile");
       })
       .catch(handleLoginErr);
   }
