@@ -18,6 +18,7 @@
 html,
 body {
   height: 100%;
+  background-color: #333;
 }
 
 .inner-cover {
@@ -80,6 +81,75 @@ body {
 .hidden {
   display: none;
 }
+<<<<<<< Updated upstream
+=======
+
+.card-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* padding: 16px; */
+  text-align: center;
+  background-color: #f1f1f1;
+  float: left;
+  /* width: 25%; */
+  /* padding: 0 10px; */
+  border-radius: 10px;
+  padding:5px 10px;
+}
+
+.card-body {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.userid {
+  color: white;
+}
+
+.searchbar{
+  margin-top: 2%;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+  }
+
+  .search_input{
+  color: #353b48;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 450px;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_icon{
+  background: white;
+  color: #e74c3c;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:#353b48;
+  }
+
+
+
+>>>>>>> Stashed changes
 /* Previous bootstrap design */
 /* .display-4 {
     font-weight: bold;
