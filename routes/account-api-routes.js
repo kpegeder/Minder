@@ -7,17 +7,15 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 // Select all account for a single account
-router.get("/api/account/:id", function (req, res) {
-  db.Account.findAll({
-    where: { AccountId: req.params.id },
-  }).then(function (results) {
+router.get("/api/account", function (req, res) {
+  db.Account.findAll({}).then(function (results) {
     res.json(results);
   });
 });
 
 // Sign in
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
-  console.log(req.user);
+  // console.log(req.user);
   res.json(req.user);
 });
 

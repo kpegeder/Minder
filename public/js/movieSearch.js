@@ -2,6 +2,13 @@ $(document).ready(function () {
   // Global variable
   let addMovie;
 
+  // User info
+  let userID;
+  $.get("/api/account_data").then(function (data) {
+    userID = data.id;
+    $(".username").text(data.username);
+  });
+
   // Display movie to the webpage
   function displayMovieInfo(event) {
     event.preventDefault();
@@ -27,6 +34,7 @@ $(document).ready(function () {
         runtime: res.Runtime,
         metaCritic: res.Metascore,
         imdb: res.imdbRating,
+        AccountId: userID,
       };
     });
   }
