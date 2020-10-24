@@ -105,3 +105,47 @@ body {
 /* .lead {
     text-align: center;
 } */
+
+
+/* HBS Movie Blocks */
+
+#movieCards{
+  padding: 25px;
+  margin:10px;
+  background-color: gainsboro;
+  align-content: center;
+  /* float: left; */
+  
+  
+}
+
+/* .card{
+border: 1px solid red;
+display:inline-block;
+} */
+
+/* .card-columns {
+  display: inline-block;
+  float: left;
+  border: 5px soliud blueviolet;
+} */
+
+.movieBlock {
+  
+  
+ 
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left:25px;
+}
+
+.card-title{
+  padding-top: 15px;
+  text-align: center;
+}
+
+.card-body{
+  text-align: center;
+  background-color: rgb(150, 150, 150);
+  color:white;
+}
