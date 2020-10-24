@@ -13,7 +13,7 @@ $(document).ready(function () {
   function displayMovieInfo(event) {
     event.preventDefault();
     let movie = $("#movie-input").val().trim();
-    const queryURL = "http://www.omdbapi.com/?t=" + movie + "&apikey=a9df4696";
+    const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
