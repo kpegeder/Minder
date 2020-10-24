@@ -142,10 +142,18 @@ display:inline-block;
 .card-title{
   padding-top: 15px;
   text-align: center;
+  text-transform: uppercase;
+  color:gray;
 }
 
 .card-body{
   text-align: center;
-  background-color: rgb(150, 150, 150);
+  background-color: #6CD2C5;
   color:white;
+}
+
+#cardText{
+
+background-color: gray;  
+color: white;
 }
