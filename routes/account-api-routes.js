@@ -21,7 +21,6 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
 
 // Sign up
 router.post("/api/signup", function (req, res) {
-  console.log(req.body);
   db.Account.create(req.body)
     .then(function () {
       res.redirect(307, "/api/login");
