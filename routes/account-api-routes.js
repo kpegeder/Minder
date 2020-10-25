@@ -15,7 +15,6 @@ router.get("/api/account", function (req, res) {
 
 // Sign in
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
-  // console.log(req.user);
   res.json(req.user);
 });
 
@@ -32,12 +31,11 @@ router.post("/api/signup", function (req, res) {
 
 // Route for getting some user data
 router.get("/api/account_data", function (req, res) {
-  res.json(req.user);
-  // if (!req.user) {
-  //   res.json({});
-  // } else {
-  //   res.json({ req });
-  // }
+  if (!req.user) {
+    res.json({});
+  } else {
+    res.json({ username: req.user.username, id: req.user.id });
+  }
 });
 
 // Route for logging user out

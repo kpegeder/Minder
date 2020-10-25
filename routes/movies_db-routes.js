@@ -6,10 +6,36 @@ const db = require("../models");
 
 const passport = require("../config/passport");
 
+const { Op } = require("sequelize");
+
 // Select all movies for a single account
 router.get("/api/movie/", function (req, res) {
-  db.Movies.findAll({}).then(function (results) {
+  db.Movies.findAll({
+    // where: { AccountId: req.user.id },
+  }).then(function (results) {
     res.render("index", { Movies: results });
+  });
+});
+
+router.get("/api/movieAll", function (req, res) {
+  db.Movies.findAll({
+    where: { AccountId: req.user.id },
+  }).then(function (results) {
+    res.json(results);
+  });
+});
+
+router.get("/api/compare", function (req, res) {
+  console.log(req.query);
+  db.Movies.findAll({
+    where: {
+      [Op.and]: [
+        { AccountId: req.query.userId },
+        { AccountId: req.query.friendId },
+      ],
+    },
+  }).then(function (results) {
+    res.json(results);
   });
 });
 
