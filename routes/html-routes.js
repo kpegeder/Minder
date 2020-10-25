@@ -36,7 +36,7 @@ router.get("/homepage", function (req, res) {
 });
 
 router.get("/profile", isAuthenticated, function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/profile.html"));
+  res.render("index");
 });
 
 module.exports = router;

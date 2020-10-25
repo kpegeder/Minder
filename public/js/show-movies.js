@@ -1,11 +1,13 @@
 $(document).ready(function () {
   // jQuery references
   let acctSelect = $("#accounts");
+  let compareAcct = {};
 
   // User info
   let userID;
   $.get("/api/account_data").then(function (data) {
     userID = data.id;
+    compareAcct.userID = userID;
     $(".username").text(data.username);
   });
 
@@ -36,17 +38,19 @@ $(document).ready(function () {
     listOption.text(account.username);
     return listOption;
   }
-  // $("#my-movies").on("click", function movies() {
-  //   $.get(
-  //     "/api/movie/"
-  //     // , function (data, status) {
-  //     //   console.log(data);
-  //     //   console.log(status);
-  //     // }
-  //   );
-  // });
+
+  $("#my-movies").on("click", function movies() {
+    $.get("/api/movie").then(function (results) {
+      console.log(results);
+      $(".display-movies");
+    });
+  });
 
   $("#compare").on("click", function () {
-    console.log($("#accounts").val());
+    compareAcct.friendId = parseInt($("#accounts").val());
+    $.get("/api/compare", compareAcct).then(function (results) {
+      console.log(results);
+    });
+    console.log(compareAcct);
   });
 });
