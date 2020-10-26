@@ -1,31 +1,29 @@
 
 <div class="container-fluid d-flex justify-content-center">
-<div class="row">
-  <div class=" col-lg-12 movieBlock">
-<div class="row">
-{{#each Movies}}
-<div class="card" id="movieCards" style="width: 20rem; "  >
-    <img class="card-img-top img-fluid"src={{dataValues.poster}} alt="Card image cap">
-    <div class="card-block">
-      <h4 class="card-title">{{dataValues.title}}</h4>
-      <ul class="list-group list-group-flush" >
-    <li class="list-group-item" id="cardText">{{dataValues.genre}}</li>
-    <li class="list-group-item" id="cardText">{{dataValues.plot}}</li>
-    <li class="list-group-item" id="cardText">Rotten Tomatoes Score: {{dataValues.metaCritic}}</li>
-  </ul>
-  <div class="card-body">
-    <p>Watch Now</p>
-    <a href="https://www.netflix.com/" class="card-link" target="blank">
-    <img class="img"src="https://logos-world.net/wp-content/uploads/2020/04/Netflix-Symbol.png" style="width:100px;height:50px"; alt="Card image cap"></a>
-  </div>
+  <div class="row">
+    <div class=" col-lg-12 movieBlock">
+      <div class="row">
+        {{#each Movies}}
+          <div class="card movieCards" id="movieID-{{dataValues.id}}" style="width: 20rem; "  >
+          <img class="card-img-top img-fluid"src={{dataValues.poster}} alt="Card image cap">
+            <div class="card-block">
+              <h4 class="card-title">{{dataValues.title}}</h4>
+              <ul class="list-group list-group-flush" >
+                <li class="list-group-item" id="cardText">{{dataValues.genre}}</li>
+                <li class="list-group-item" id="cardText">{{dataValues.plot}}</li>
+                <li class="list-group-item" id="cardText">Rotten Tomatoes Score: {{dataValues.metaCritic}}</li>
+              </ul>
+              <div class="card-body">
+                <p>Watch Now</p>
+                <a href="https://www.netflix.com/" class="card-link" target="blank">
+                <img class="img"src="https://logos-world.net/wp-content/uploads/2020/04/Netflix-Symbol.png" style="width:100px;height:50px"; alt="Card image cap"></a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
-   {{/each}}
-   </div>
-
-
-</div>
-</div>
 </div>
 
 
