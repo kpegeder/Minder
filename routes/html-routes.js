@@ -28,15 +28,10 @@ router.get("/signup", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 
-router.get("/homepage", function (req, res) {
-  if (req.user) {
-    res.redirect("/homepage");
-  }
-  res.sendFile(path.join(__dirname, "../public/landing.html"));
+router.get("/homepage", isAuthenticated, function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/homepage.html"));
 });
 
-router.get("/profile", isAuthenticated, function (req, res) {
-  res.render("index");
-});
+// Route for /profile is in movies_db-routes
 
 module.exports = router;

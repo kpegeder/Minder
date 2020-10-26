@@ -4,20 +4,21 @@ const router = express.Router();
 
 const db = require("../models");
 
-const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 const { Op } = require("sequelize");
 
 // Select all movies for a single account
-router.get("/api/movie/", function (req, res) {
+router.get("/profile", isAuthenticated, function (req, res) {
   db.Movies.findAll({
-    // where: { AccountId: req.user.id },
+    where: { AccountId: req.user.id },
   }).then(function (results) {
     res.render("index", { Movies: results });
   });
 });
 
-router.get("/api/movieAll", function (req, res) {
+// Get movies of user
+router.get("/api/compare", function (req, res) {
   db.Movies.findAll({
     where: { AccountId: req.user.id },
   }).then(function (results) {
@@ -25,13 +26,13 @@ router.get("/api/movieAll", function (req, res) {
   });
 });
 
-router.get("/api/compare", function (req, res) {
-  console.log(req.query);
+// Get movies of two people
+router.get("/api/compareAll", function (req, res) {
   db.Movies.findAll({
     where: {
-      [Op.and]: [
-        { AccountId: req.query.userId },
-        { AccountId: req.query.friendId },
+      [Op.or]: [
+        { AccountId: req.query.friendID },
+        { AccountId: req.query.userID },
       ],
     },
   }).then(function (results) {
@@ -39,9 +40,8 @@ router.get("/api/compare", function (req, res) {
   });
 });
 
-// Unknown route
+// Post movie to database
 router.post("/api/movie", function (req, res) {
-  console.log(req.body);
   db.Movies.create(req.body).then(function (results) {
     res.json(results);
   });
@@ -61,17 +61,3 @@ router.delete("/api/movie/:id", function (req, res) {
 });
 
 module.exports = router;
-
-// app.get("/", function(req, res) {
-//   connection.query("SELECT * FROM tasks;", function(err, data) {
-//     if (err) throw err;
-
-//     // Test it
-//     // console.log('The solution is: ', data);
-
-//     // Test it
-//     // return res.send(data);
-
-//     res.render("index", { Movies: data });
-//   });
-// });
