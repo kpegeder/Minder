@@ -37,14 +37,14 @@ body {
 
 .site-wrapper-inner {
   display: table-cell;
-    vertical-align: top;
-    background-image: url(../Assets/1597777.jpg);
-    /* background-repeat: no-repeat;
+  vertical-align: top;
+  background-image: url(../Assets/1597777.jpg);
+  /* background-repeat: no-repeat;
     background-position: top; */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .cover-container {
@@ -90,9 +90,8 @@ body {
   width: 25%;
   /* padding: 0 10px; */
   border-radius: 10px;
-  padding:5px 10px;
+  padding: 5px 10px;
 }
-
 
 /* Previous bootstrap design */
 /* .display-4 {
@@ -106,17 +105,14 @@ body {
     text-align: center;
 } */
 
-
 /* HBS Movie Blocks */
 
-#movieCards{
+.movieCards {
   padding: 25px;
-  margin:10px;
+  margin: 10px;
   background-color: gainsboro;
   align-content: center;
   /* float: left; */
-  
-  
 }
 
 /* .card{
@@ -131,29 +127,25 @@ display:inline-block;
 } */
 
 .movieBlock {
-  
-  
- 
   padding-left: 50px;
   padding-right: 50px;
-  margin-left:25px;
+  margin-left: 25px;
 }
 
-.card-title{
+.card-title {
   padding-top: 15px;
   text-align: center;
   text-transform: uppercase;
-  color:gray;
+  color: gray;
 }
 
-.card-body{
+.card-body {
   text-align: center;
-  background-color: #6CD2C5;
-  color:white;
+  background-color: #6cd2c5;
+  color: white;
 }
 
-#cardText{
-
-background-color: gray;  
-color: white;
+#cardText {
+  background-color: gray;
+  color: white;
 }

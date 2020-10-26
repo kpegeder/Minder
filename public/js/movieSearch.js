@@ -13,6 +13,13 @@ $(document).ready(function () {
   function displayMovieInfo(event) {
     event.preventDefault();
     let movie = $("#movie-input").val().trim();
+
+    // Check if a movie was entered
+    if (!movie) {
+      return;
+    }
+
+    // URL for OMDB
     const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
     // Creating an AJAX call for the specific movie button being clicked
@@ -41,11 +48,19 @@ $(document).ready(function () {
 
   // Add object to database
   function submitMovie() {
+    hideMovie();
     $.post("/api/movie/", addMovie);
+  }
+
+  function hideMovie() {
+    if (!$("#movie-info")[0].className.includes("hidden")) {
+      $("#movie-info").addClass("hidden");
+    }
   }
 
   // Button listeners
   $("#add-movie").on("click", submitMovie);
+  $("#discard-movie").on("click", hideMovie);
   $("#show-movie").on("click", displayMovieInfo);
 });
 
