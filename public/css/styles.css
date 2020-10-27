@@ -12,12 +12,13 @@
   color: #333;
   text-shadow: none;
   background-color: #fff;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
 }
 
 html,
 body {
   height: 100%;
+  background-color: #fffcf7;
 }
 
 .inner-cover {
@@ -152,7 +153,7 @@ display:inline-block;
 
 
 #userName{
-  color: white;
+  color: #F3EADC;
 }
 
 /* Seach box styling */
@@ -178,6 +179,9 @@ display:inline-block;
       padding:20px;
     }
 
+    #movie-list{
+      margin-top: 50px;
+    }
 
 
  /* Homepage search styling */
@@ -186,6 +190,24 @@ display:inline-block;
   padding:25px;
 }
 
+#movieSearch{
+  margin-bottom: 50px;
+  background-color:#6cd2c5;
+} 
+
+
+#findMovie{
+  align-content: center;
+  
+}
+
+#searchForm{
+  padding:50px;
+}
+
+#searchBox{
+  justify-content: center;
+}
 /* global styling */
 
 /* .btn .btn-primary{
@@ -196,10 +218,100 @@ display:inline-block;
 .btn:hover{
   background-color: #DBB972;
   border: none;
-} */
+}  */
 
 /* #landingBtn{
   background-color: white;
-} */
+}
+
+/*  ========== search movie cards ========== */
+
+.card-text{
+padding: 5px;
+
+}
+
+#discard-movie{
+  padding: 5px;
+  color: gray;
+  background-color: transparent;
+  
+  
+  
+  
+}
+
+#add-movie{
+  padding-bottom:10px;
+  background-color:#6cd2c5;
+  color: white;
+  margin-top: 15px;
+ 
+}
+
+#add-movie:hover{
+  padding-bottom:10px;
+  background-color:#DBB972;
+  color: white;
+  margin-top: 15px;
+ 
+}
+
+.jumbotron{
+  background-color: #6cd2c5;
+  background-image: url(../Assets/1597777.jpg);
+  background-position-y: 30%;
+  background-position-x: 20%;
+  background-repeat: no-repeat;
+}
 
 
+/* ======== BUTTONS ========= */
+
+#my-movies{
+  background-color: #FE4858;
+  border: none;
+}
+#my-movies:hover{
+  background-color: #fd6c78;
+  border: none;
+}
+
+#compare{
+  background-color: #FE4858;
+  border: none;
+}
+
+#compare:hover{
+  background-color: #fd6c78;
+  border: none;
+}
+
+#signin{
+  background-color: #FE4858;
+  border: none;
+}
+#signin:hover{
+  background-color: #fd6c78;
+  border: none;
+}
+
+#signup{
+  background-color: #FE4858;
+  border: none;
+}
+#signup:hover{
+  background-color: #fd6c78;
+  border: none;
+}
+
+#show-movie{
+  background-color: #FE4858;
+  border: none;
+  color:white;
+}
+#show-movie:hover{
+  background-color: #fd6c78;
+  border: none;
+  color: white;
+}
