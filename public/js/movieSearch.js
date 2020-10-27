@@ -35,7 +35,6 @@ $(document).ready(function () {
 
     $.ajax(settings).then(function (response) {
       for (let i = 0; i < response.d.length; i++) {
-        console.log(response.d[i]);
         let movie = response.d[i];
 
         // Show movies that are only by title
