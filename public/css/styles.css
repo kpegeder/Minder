@@ -148,3 +148,58 @@ display:inline-block;
   background-color: gray;
   color: white;
 }
+
+
+
+#userName{
+  color: white;
+}
+
+/* Seach box styling */
+
+
+#signupForm{
+  margin-top: 75px;
+}
+
+#signinForm{
+    margin-top: 75px;
+    padding:25px;
+    }
+
+#resultsBlock{
+
+    padding:50px;
+    margin-bottom: 50px;
+  }
+
+#profileForm{
+
+      padding:20px;
+    }
+
+
+
+ /* Homepage search styling */
+
+#mainSearch{
+  padding:25px;
+}
+
+/* global styling */
+
+/* .btn .btn-primary{
+  background-color: #6cd2c5;
+  border: none;
+}
+
+.btn:hover{
+  background-color: #DBB972;
+  border: none;
+} */
+
+/* #landingBtn{
+  background-color: white;
+} */
+
+
