@@ -1,6 +1,7 @@
 $(document).ready(function () {
   // Global variable
   let addMovie;
+  let imdbID;
 
   // User info
   let userID;
@@ -19,18 +20,76 @@ $(document).ready(function () {
       return;
     }
 
+    // Call information for imdb
+    const settings = {
+      async: true,
+      crossDomain: true,
+      url: "https://rapidapi.p.rapidapi.com/title/auto-complete?q=" + movie,
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "x-rapidapi-key": "6e6fa9c971msh4677fc2f963da2bp1a17d0jsnd8227d6ede33",
+      },
+    };
+
+    $.ajax(settings).then(function (response) {
+      // console.log(response.d.length);
+      for (let i = 0; i < response.d.length; i++) {
+        let movie = response.d[i];
+        movieCard(movie);
+      }
+
+      // movieCard(response);
+      // addMovieHTML(response);
+    });
+
+    // // URL for OMDB
+    // const queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&apikey=trilogy";
+
+    // // Creating an AJAX call for the specific movie button being clicked
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET",
+    // }).then(function (res) {
+    //   // console.log(res);
+
+    //   // movieCard(res);
+
+    //   // Movie object for the database
+    //   addMovie = {
+    //     title: res.Title,
+    //     poster: res.Poster,
+    //     genre: res.Genre,
+    //     actor: res.Actors,
+    //     plot: res.Plot,
+    //     runtime: res.Runtime,
+    //     metaCritic: res.Metascore,
+    //     imdb: res.imdbRating,
+    //     AccountId: userID,
+    //   };
+    // });
+  }
+
+  function hideMovie(movieID) {
+    if (!$(`#${movieID}`)[0].className.includes("hidden")) {
+      $(`#${movieID}`).addClass("hidden");
+    }
+  }
+
+  // Add movie to database
+  $("body").on("click", "#add-movie", function submitMovie() {
+    imdbID = $(this).parent()[0].id;
+
+    hideMovie(imdbID);
+
     // URL for OMDB
-    const queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+    const queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&apikey=trilogy";
 
     // Creating an AJAX call for the specific movie button being clicked
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function (res) {
-      // console.log(res);
-
-      movieCard(res);
-
       // Movie object for the database
       addMovie = {
         title: res.Title,
@@ -43,82 +102,70 @@ $(document).ready(function () {
         imdb: res.imdbRating,
         AccountId: userID,
       };
+      $.post("/api/movie/", addMovie);
     });
-  }
+  });
 
-  // Add object to database
-  function submitMovie() {
-    hideMovie();
-    $.post("/api/movie/", addMovie);
-  }
+  // Discard Movie
+  $("body").on("click", "#discard-movie", function discardMovie() {
+    imdbID = $(this).parent()[0].id;
 
-  function hideMovie() {
-    if (!$("#movie-info")[0].className.includes("hidden")) {
-      $("#movie-info").addClass("hidden");
-    }
-  }
+    hideMovie(imdbID);
+  });
 
-  // Button listeners
-  $("#add-movie").on("click", submitMovie);
-  $("#discard-movie").on("click", hideMovie);
   $("#show-movie").on("click", displayMovieInfo);
 });
 
+// Create card for a movie
 function movieCard(result) {
-  $("#movie-tp").empty();
-  $("#movie-RGAR").empty();
-  $(".hidden").removeClass("hidden");
-
-  $("#movie-tp").prepend(
-    $("<img>").attr({
-      src: result.Poster,
-      class: "card-img-top",
-      id: "movie-poster",
+  $(".movieBlock").append(
+    $("<div>").attr({
+      class: "card movieCards", // add hidden class
+      id: `${result.id}`,
     })
   );
+
+  let image = $("<img>").attr({
+    src: result.i.imageUrl,
+    class: "card-img-top img-fluid",
+    id: `moviePoster-${result.rank}`,
+  });
 
   let title = $("<h5>")
     .attr({
       class: "card-title",
-      id: "movie-title",
+      id: `movieTitle-${result.rank}`,
     })
-    .text(result.Title);
+    .text(result.l);
 
-  let plot = $("<p>")
+  let actors = $("<h5>")
     .attr({
       class: "card-text",
-      id: "movie-plot",
+      id: `movieActors-${result.rank}`,
     })
-    .text(result.Plot);
+    .text(result.s);
 
-  let rating = $("<li>")
+  let year = $("<h5>")
     .attr({
-      class: "list-group-item",
-      id: "movie-rating",
+      class: "card-text",
+      id: `movieYear-${result.rank}`,
     })
-    .text(result.imdbRating);
+    .text("Release Date: " + result.y);
 
-  let genre = $("<li>")
+  let dislike = $("<button>")
     .attr({
-      class: "list-group-item",
-      id: "movie-genre",
+      class: "btn btn-default my-2 my-sm-0",
+      id: "discard-movie",
     })
-    .text(result.Genre);
+    .text("Dislike");
 
-  let actor = $("<li>")
+  let like = $("<button>")
     .attr({
-      class: "list-group-item",
-      id: "movie-actor",
+      role: "button",
+      class: "btn btn-default my-2 my-sm-0",
+      id: "add-movie",
     })
-    .text(result.Actors);
+    .text("Like");
 
-  let runTime = $("<li>")
-    .attr({
-      class: "list-group-item",
-      id: "movie-runtime",
-    })
-    .text(result.Runtime);
-
-  $("#movie-tp").append(title, plot);
-  $("#movie-RGAR").append(rating, genre, actor, runTime);
+  $(`#${result.id}`).append(image, title, actors, year, dislike, like);
 }
