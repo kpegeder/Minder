@@ -141,7 +141,7 @@ function movieCard(result) {
       class: "btn btn-default my-2 my-sm-0",
       id: "add-movie",
     })
-    .text("Like");
+    .text("Add to list");
 
-  $(`#${result.id}`).append(image, title, actors, year, dislike, like);
+  $(`#${result.id}`).append(image, title, actors, year, like, dislike);
 }
