@@ -6,6 +6,6 @@ Our goal for this project was to create a social media platform that connects us
 
 The user goes to our website and from there they can either sign-up for the first time or log-in as a returning user.
 
-![landing page]()
+![landing page](./Assets/landingpage.png)
 
 
