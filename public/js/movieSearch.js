@@ -14,6 +14,7 @@ $(document).ready(function () {
   function displayMovieInfo(event) {
     event.preventDefault();
     let movie = $("#movie-input").val().trim();
+    $("#allMovies").empty();
 
     // Check if a movie was entered
     if (!movie) {
@@ -33,41 +34,16 @@ $(document).ready(function () {
     };
 
     $.ajax(settings).then(function (response) {
-      // console.log(response.d.length);
       for (let i = 0; i < response.d.length; i++) {
+        console.log(response.d[i]);
         let movie = response.d[i];
-        movieCard(movie);
+
+        // Show movies that are only by title
+        if (movie.id.includes("tt")) {
+          movieCard(movie);
+        }
       }
-
-      // movieCard(response);
-      // addMovieHTML(response);
     });
-
-    // // URL for OMDB
-    // const queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&apikey=trilogy";
-
-    // // Creating an AJAX call for the specific movie button being clicked
-    // $.ajax({
-    //   url: queryURL,
-    //   method: "GET",
-    // }).then(function (res) {
-    //   // console.log(res);
-
-    //   // movieCard(res);
-
-    //   // Movie object for the database
-    //   addMovie = {
-    //     title: res.Title,
-    //     poster: res.Poster,
-    //     genre: res.Genre,
-    //     actor: res.Actors,
-    //     plot: res.Plot,
-    //     runtime: res.Runtime,
-    //     metaCritic: res.Metascore,
-    //     imdb: res.imdbRating,
-    //     AccountId: userID,
-    //   };
-    // });
   }
 
   function hideMovie(movieID) {
@@ -118,10 +94,11 @@ $(document).ready(function () {
 
 // Create card for a movie
 function movieCard(result) {
-  $(".movieBlock").append(
+  $("#allMovies").append(
     $("<div>").attr({
-      class: "card movieCards", // add hidden class
+      class: "card movieCards",
       id: `${result.id}`,
+      style: "width: 20rem",
     })
   );
 
