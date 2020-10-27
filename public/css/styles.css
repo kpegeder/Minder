@@ -91,7 +91,6 @@ body {
 }
 
 
-
 /* Previous bootstrap design */
 /* .display-4 {
     font-weight: bold;
@@ -111,7 +110,17 @@ body {
   margin: 10px;
   background-color: gainsboro;
   align-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   /* float: left; */
+}
+
+.movieCards:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  margin-top:10px;
+  margin-bottom:10px;
+  background-color:#FFF;
 }
 
 /* .card{
