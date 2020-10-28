@@ -97,4 +97,4 @@ Licensed under the MIT license.
 
 ### Questions
 
-If you have any additional questions about the applictaion, you can contact us through email: [Kalen](mailto:k.pegeder@gmail.com), [David](mailto:davidnjaffe@gmail.com), [Micheal](mailto:mcheung008@gmail.com). You can see more of our work on GitHub: [Kalen](https://github.com/kpegeder), [David](https://github.com/davidnjaffe), [Bronson](https://github.com/Bronson-code), [Michael](https://github.com/mcheung008)
+If you have any additional questions about the applictaion, you can contact us through email: [Kalen](mailto:k.pegeder@gmail.com), [David](mailto:davidnjaffe@gmail.com), [Bronson](mailto:oliverbronson@yahoo.com), [Micheal](mailto:mcheung008@gmail.com). You can see more of our work on GitHub: [Kalen](https://github.com/kpegeder), [David](https://github.com/davidnjaffe), [Bronson](https://github.com/Bronson-code), [Michael](https://github.com/mcheung008)
